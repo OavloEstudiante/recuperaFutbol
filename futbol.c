@@ -17,7 +17,7 @@ int nombreRepetido(char nombre[], char nombres[][50], int cantidad) {
     return 0; 
 }
 
-int validarResultadoPartido(const char *mensaje, const char equipo[]) {
+int validarResultadoPartido(char mensaje[], char equipo[]) {
     int goles = -1; 
     char entrada[100]; 
     int n_items_escaneados; 
@@ -27,8 +27,7 @@ int validarResultadoPartido(const char *mensaje, const char equipo[]) {
 
         if (fgets(entrada, sizeof(entrada), stdin) == NULL) {
             printf("Error al leer la entrada.\n");
-
-             continue;
+            continue;
         }
 
         n_items_escaneados = sscanf(entrada, "%d", &goles);
@@ -40,7 +39,6 @@ int validarResultadoPartido(const char *mensaje, const char equipo[]) {
             printf("Los goles no pueden ser negativos. Intente de nuevo.\n");
         }
 
-
     } while (n_items_escaneados != 1 || goles < 0);
 
     return goles;
@@ -48,7 +46,7 @@ int validarResultadoPartido(const char *mensaje, const char equipo[]) {
 
 void consumirLineaRestante() {
     int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    while ((c = getchar()) != '\n');
 }
 
 int main() {
